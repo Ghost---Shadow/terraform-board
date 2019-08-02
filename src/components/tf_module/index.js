@@ -1,9 +1,5 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import Collapse from '@material-ui/core/Collapse';
-import Switch from '@material-ui/core/Switch';
-import CardContent from '@material-ui/core/CardContent';
-// import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 class TfModule extends React.Component {
   constructor(props) {
@@ -14,26 +10,42 @@ class TfModule extends React.Component {
   }
 
   render() {
+    const {
+      x, y, w, h,
+      color,
+      children,
+    } = this.props;
     const { extended } = this.state;
     return (
-      <Card style={{ minWidth: 250, maxWidth: extended ? 500 : 250 }}>
-        <CardContent>
-          TfModule
-          <Switch
-            checked={extended}
-            onChange={event => this.setState({ extended: event.target.checked })}
-            value="extended"
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
-        </CardContent>
-        <Collapse in={extended} timeout="auto" unmountOnExit>
-          <CardContent>
-          asdas
-          </CardContent>
-        </Collapse>
-      </Card>
+      <React.Fragment>
+        <rect
+          onClick={() => this.setState({ extended: !extended })}
+          x={x}
+          y={y}
+          width={extended ? w : '100'}
+          height={h}
+          rx="15"
+          fill="#eee"
+          stroke={color}
+          strokeWidth="10"
+        />
+        {extended && children}
+      </React.Fragment>
     );
   }
 }
+
+TfModule.propTypes = {
+  children: PropTypes.element.isRequired,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  w: PropTypes.number.isRequired,
+  h: PropTypes.number.isRequired,
+  color: PropTypes.string,
+};
+
+TfModule.defaultProps = {
+  color: '#333',
+};
 
 export default TfModule;
