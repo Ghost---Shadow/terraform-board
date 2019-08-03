@@ -6290,6 +6290,13 @@ good-listener@^1.2.2:
   dependencies:
     delegate "^3.1.2"
 
+gopher-hcl@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/gopher-hcl/-/gopher-hcl-0.2.0.tgz#7386b9cf7fc151f8eaaa889e2fc527365d171529"
+  integrity sha512-myBMpbVvoqC8X8P4PUJ2s34yHgl4X/S+DyXlFxU1a290PvKcGawVNzGOjzd6MxAGh41d4ySwOxsYy5XArysNKA==
+  dependencies:
+    mixin-deep "^2.0.1"
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.15"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
@@ -8601,6 +8608,11 @@ mixin-deep@^1.2.0:
   dependencies:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
+
+mixin-deep@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-2.0.1.tgz#9a6946bef4a368401b784970ae3caaaa6bab02fa"
+  integrity sha512-imbHQNRglyaplMmjBLL3V5R6Bfq5oM+ivds3SKgc6oRtzErEnBUUc5No11Z2pilkUvl42gJvi285xTNswcKCMA==
 
 mixin-object@^2.0.1:
   version "2.0.1"
