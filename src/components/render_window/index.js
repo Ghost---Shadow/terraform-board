@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
-// import fcose from 'cytoscape-fcose';
-import cose from 'cytoscape-cose-bilkent';
+import fcose from 'cytoscape-fcose';
+// import cose from 'cytoscape-cose-bilkent';
 import CytoscapeComponent from 'react-cytoscapejs';
 
-// cytoscape.use(fcose);
-cytoscape.use(cose);
+cytoscape.use(fcose);
+// cytoscape.use(cose);
 
 const stylesheet = [
   {
@@ -42,9 +42,9 @@ class RendererWindow extends React.Component {
 
   componentDidMount() {
     if (this.cy) {
-      console.log('here');
       this.cy.nodes().on('click', (e) => {
-        console.log(e);
+        const node = e.target;
+        console.log(node.data('id'));
       });
     }
   }
@@ -57,7 +57,7 @@ class RendererWindow extends React.Component {
         layout={{ name: 'cose' }}
         style={{ width, height }}
         stylesheet={stylesheet}
-        cy={(cy) => { console.log('heer'); this.cy = cy; }}
+        cy={(cy) => { this.cy = cy; }}
       />
     );
   }
