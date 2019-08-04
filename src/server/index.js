@@ -1,7 +1,18 @@
 const hcl = require('gopher-hcl');
 const fs = require('fs');
+const express = require('express');
 
-const source = fs.readFileSync('./server/scenarios/01_basic/test.hcl');
-const result = hcl.parse(source);
+const { transformer } = require('./helpers');
 
-fs.writeFileSync('./dump.json', JSON.stringify(result, null, 2));
+const app = express();
+const port = 3001;
+
+app.get('/api/graph', (req, res) => {
+  console.log('/api/graph');
+  const source = fs.readFileSync('./src/server/scenarios/01_basic/hcl/entry.hcl');
+  const result = hcl.parse(source);
+  const transformedGraph = transformer(result);
+  res.send(transformedGraph);
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));

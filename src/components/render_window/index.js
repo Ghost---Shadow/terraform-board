@@ -1,20 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
-import fcose from 'cytoscape-fcose';
-// import cose from 'cytoscape-cose-bilkent';
+// import fcose from 'cytoscape-fcose';
+import cose from 'cytoscape-cose-bilkent';
 import CytoscapeComponent from 'react-cytoscapejs';
 
-cytoscape.use(fcose);
-// cytoscape.use(cose);
+// cytoscape.use(fcose);
+cytoscape.use(cose);
+
+const nodeColorLookup = {
+  provider: '#f9ab00',
+  resource: '#66921b',
+  module: '#e2683c',
+  data: '#f9df7b',
+};
 
 const stylesheet = [
   {
     selector: 'node',
     style: {
-      'background-color': ele => ele.data('bg') || '#2B65EC',
-      label: ele => ele.data('id'),
-      // shape: 'rectangle'
+      'background-color': ele => nodeColorLookup[ele.data('type')] || '#2B65EC',
+      label: ele => ele.data('label'),
+      shape: 'rectangle',
     },
   },
   {
@@ -76,8 +83,8 @@ RendererWindow.propTypes = {
 };
 
 RendererWindow.defaultProps = {
-  width: 600,
-  height: 600,
+  width: 1000,
+  height: 800,
 };
 
 export default RendererWindow;
