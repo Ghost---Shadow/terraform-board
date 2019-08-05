@@ -17,6 +17,7 @@ app.get('/api/graph', (req, res) => {
   const inputDir = path.join('./');
   const allFiles = walk(path.join(path.resolve(inputDir)));
   const allGraphs = allFiles.map((filename) => {
+    console.log('Parsing', filename);
     const source = fs.readFileSync(filename);
     const result = hcl.parse(source);
     const transformedGraph = transformer(result);

@@ -20,7 +20,11 @@ const threeLevelTransformer = (obj, type) => (
 const providerTransformer = obj => twoLevelTransformer(obj, 'provider');
 const moduleTransformer = obj => twoLevelTransformer(obj, 'module');
 const dataTransformer = obj => threeLevelTransformer(obj, 'data');
+const resourceTransformer = obj => threeLevelTransformer(obj, 'resource');
 const localsTransformer = () => []; // TODO
+const outputTransformer = () => []; // TODO
+const variableTransformer = () => []; // TODO
+const terraformTransformer = () => []; // TODO
 
 const transformer = (obj) => {
   const level1 = Object.keys(obj);
@@ -31,6 +35,10 @@ const transformer = (obj) => {
       module: moduleTransformer,
       data: dataTransformer,
       locals: localsTransformer,
+      resource: resourceTransformer,
+      output: outputTransformer,
+      variable: variableTransformer,
+      terraform: terraformTransformer,
     };
     const fun = typeLookup[type];
     if (!fun) { throw new Error(`Unknown type ${type}`); }
