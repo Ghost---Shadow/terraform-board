@@ -1,6 +1,3 @@
-- Walking and scanning
-  - Copy the walker
-  - Get jsons for the file tree structure
 - Edge generation logic
   - id: module1.module2:resource.aws_ec2.default
   - Key lookup within a module (source: resource.aws_ec2.default, target: self)

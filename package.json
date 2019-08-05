@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:server": "node ./server/index.js",
+    "start:server": "nodemon ./server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:server": "jest ./server/**/*.js --watch",
@@ -59,7 +59,8 @@
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.14.3",
+    "nodemon": "^1.19.1"
   },
   "proxy": "http://localhost:3001"
 }
