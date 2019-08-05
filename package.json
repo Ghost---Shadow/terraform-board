@@ -34,7 +34,9 @@
     "test:server:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "build_and_publish": "yarn build; npm publish",
+    "build_and_link": "yarn build; npm link"
   },
   "eslintConfig": {
     "extends": "react-app"
