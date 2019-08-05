@@ -1,6 +1,3 @@
-- End to end scanning and deployment
-  - Build the react app
-  - Host it with express static
 - Walking and scanning
   - Copy the walker
   - Get jsons for the file tree structure

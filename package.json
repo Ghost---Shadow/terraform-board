@@ -2,6 +2,9 @@
   "name": "terraboard",
   "version": "0.1.0",
   "private": true,
+  "bin": {
+    "terraboard": "server/index.js"
+  },
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "cytoscape": "^3.8.2",
@@ -16,11 +19,17 @@
     "react-scripts": "3.0.1",
     "styled-components": "^4.3.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ghost---Shadow/terraboard"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "start:server": "node ./src/server/index.js",
+    "start:server": "node ./server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:server": "jest ./server/**/*.js --watch",
+    "test:server:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
