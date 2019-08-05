@@ -2,22 +2,32 @@ const {
   providerTransformer,
   dataTransformer,
   moduleTransformer,
-  transformer,
+  resourceTransformer,
+  // transformer,
 } = require('./helpers');
 
-const sample1 = require('./scenarios/01_basic/json/entry.json');
-const expected1 = require('./scenarios/01_basic/json/transformed');
+// const sample1 = require('./scenarios/01_basic/json/entry.json');
+// const expected1 = require('./scenarios/01_basic/json/transformed');
 
 describe('helpers', () => {
+  const basename = 'basename';
+
   describe('providerTransformer', () => {
     it('should transform the sample', () => {
       const input = {
         aws: {},
       };
 
-      const expected = [{ data: { label: 'aws', type: 'provider' } }];
+      const expected = [{
+        data: {
+          id: `${basename}/provider.aws`,
+          label: 'aws',
+          type: 'provider',
+          parent: basename,
+        },
+      }];
 
-      expect(providerTransformer(input)).toEqual(expected);
+      expect(providerTransformer(input, basename)).toEqual(expected);
     });
   });
   describe('moduleTransformer', () => {
@@ -28,11 +38,25 @@ describe('helpers', () => {
       };
 
       const expected = [
-        { data: { label: 'master', type: 'module' } },
-        { data: { label: 'replica', type: 'module' } },
+        {
+          data: {
+            id: `${basename}/module.master`,
+            label: 'master',
+            type: 'module',
+            parent: basename,
+          },
+        },
+        {
+          data: {
+            id: `${basename}/module.replica`,
+            label: 'replica',
+            type: 'module',
+            parent: basename,
+          },
+        },
       ];
 
-      expect(moduleTransformer(input)).toEqual(expected);
+      expect(moduleTransformer(input, basename)).toEqual(expected);
     });
   });
   describe('dataTransformer', () => {
@@ -44,20 +68,78 @@ describe('helpers', () => {
       };
 
       const expected = [
-        { data: { label: 'aws_vpc/default', type: 'data' } },
-        { data: { label: 'aws_subnet_ids/all', type: 'data' } },
-        { data: { label: 'aws_security_group/default', type: 'data' } },
+        {
+          data: {
+            id: `${basename}/data.aws_vpc.default`,
+            label: 'aws_vpc.default',
+            type: 'data',
+            parent: basename,
+          },
+        },
+        {
+          data: {
+            id: `${basename}/data.aws_subnet_ids.all`,
+            label: 'aws_subnet_ids.all',
+            type: 'data',
+            parent: basename,
+          },
+        },
+        {
+          data: {
+            id: `${basename}/data.aws_security_group.default`,
+            label: 'aws_security_group.default',
+            type: 'data',
+            parent: basename,
+          },
+        },
       ];
 
-      expect(dataTransformer(input)).toEqual(expected);
+      expect(dataTransformer(input, basename)).toEqual(expected);
     });
   });
-  describe('transformer', () => {
+  describe('resourceTransformer', () => {
     it('should transform the sample', () => {
-      const input = sample1;
-      const expected = expected1;
+      const input = {
+        resource1: { name1: {}, name2: {} },
+        resource2: { name1: {} },
+      };
 
-      expect(transformer(input)).toEqual(expected);
+      const expected = [
+        {
+          data: {
+            id: `${basename}/resource.resource1.name1`,
+            label: 'resource1.name1',
+            type: 'resource',
+            parent: basename,
+          },
+        },
+        {
+          data: {
+            id: `${basename}/resource.resource1.name2`,
+            label: 'resource1.name2',
+            type: 'resource',
+            parent: basename,
+          },
+        },
+        {
+          data: {
+            id: `${basename}/resource.resource2.name1`,
+            label: 'resource2.name1',
+            type: 'resource',
+            parent: basename,
+          },
+        },
+      ];
+
+      expect(resourceTransformer(input, basename)).toEqual(expected);
     });
   });
+  // describe('transformer', () => {
+  //   it('should transform the sample', () => {
+  //     const input = sample1;
+  //     const expected = expected1;
+
+  //     expect(transformer(input)).toEqual(expected);
+  //   });
+  // });
 });

@@ -1,32 +1,44 @@
-const _ = require('lodash');
-
-const twoLevelTransformer = (obj, type) => (
+const twoLevelTransformer = (obj, type, basename) => (
   Object.keys(obj).map(label => (
-    { data: { label, type } }
+    {
+      data: {
+        id: `${basename}/${type}.${label}`,
+        label,
+        type,
+        parent: basename,
+      },
+    }
   ))
 );
 
-const threeLevelTransformer = (obj, type) => (
+const threeLevelTransformer = (obj, type, basename) => (
   Object.keys(obj)
     .map(key1 => Object.keys(obj[key1])
       .map(key2 => (
-        { data: { label: `${key1}/${key2}`, type } }
+        {
+          data: {
+            id: `${basename}/${type}.${key1}.${key2}`,
+            label: `${key1}.${key2}`,
+            type,
+            parent: basename,
+          },
+        }
       )))
     .reduce((acc, next) => (
       acc.concat(next)
     ), [])
 );
 
-const providerTransformer = obj => twoLevelTransformer(obj, 'provider');
-const moduleTransformer = obj => twoLevelTransformer(obj, 'module');
-const dataTransformer = obj => threeLevelTransformer(obj, 'data');
-const resourceTransformer = obj => threeLevelTransformer(obj, 'resource');
+const providerTransformer = (obj, basename) => twoLevelTransformer(obj, 'provider', basename);
+const moduleTransformer = (obj, basename) => twoLevelTransformer(obj, 'module', basename);
+const dataTransformer = (obj, basename) => threeLevelTransformer(obj, 'data', basename);
+const resourceTransformer = (obj, basename) => threeLevelTransformer(obj, 'resource', basename);
 const localsTransformer = () => []; // TODO
 const outputTransformer = () => []; // TODO
 const variableTransformer = () => []; // TODO
 const terraformTransformer = () => []; // TODO
 
-const transformer = (obj) => {
+const transformer = (obj, basename) => {
   const level1 = Object.keys(obj);
 
   const typeLookupFun = (type, subObj) => {
@@ -43,18 +55,18 @@ const transformer = (obj) => {
     const fun = typeLookup[type];
     if (!fun) { throw new Error(`Unknown type ${type}`); }
 
-    return fun(subObj);
+    return fun(subObj, basename);
   };
 
   return level1
     .map(type => typeLookupFun(type, obj[type]))
-    .reduce((acc, next) => acc.concat(next), [])
-    .map((element, i) => _.merge(element, { data: { id: `n${i + 1}` } }));
+    .reduce((acc, next) => acc.concat(next), []);
 };
 
 module.exports = {
   providerTransformer,
   dataTransformer,
   moduleTransformer,
+  resourceTransformer,
   transformer,
 };

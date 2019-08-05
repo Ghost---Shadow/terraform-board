@@ -83,8 +83,8 @@ RendererWindow.propTypes = {
 };
 
 RendererWindow.defaultProps = {
-  width: 1000,
-  height: 800,
+  width: window.innerWidth,
+  height: window.innerHeight,
 };
 
 export default RendererWindow;

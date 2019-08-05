@@ -16,12 +16,25 @@ app.get('/api/graph', (req, res) => {
   // TODO: Get from API
   const inputDir = path.join('./');
   const allFiles = walk(path.join(path.resolve(inputDir)));
+  const basenames = [];
   const allGraphs = allFiles.map((filename) => {
     console.log('Parsing', filename);
+    const basename = path.basename(path.dirname(filename));
     const source = fs.readFileSync(filename);
     const result = hcl.parse(source);
-    const transformedGraph = transformer(result);
-    return transformedGraph;
+    const baseNodes = [];
+    if (basenames.indexOf(basename) === -1) {
+      basenames.push(basename);
+      baseNodes.push({
+        data: {
+          id: basename,
+          label: basename,
+          type: 'basename',
+        },
+      });
+    }
+    const transformedGraph = transformer(result, basename);
+    return baseNodes.concat(transformedGraph);
   });
 
   res.send(allGraphs.reduce((acc, next) => acc.concat(next)));
