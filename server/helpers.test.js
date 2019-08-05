@@ -3,11 +3,11 @@ const {
   dataTransformer,
   moduleTransformer,
   resourceTransformer,
-  // transformer,
+  transformer,
 } = require('./helpers');
 
-// const sample1 = require('./scenarios/01_basic/json/entry.json');
-// const expected1 = require('./scenarios/01_basic/json/transformed');
+const sample1 = require('./scenarios/02_vault/json/vault-cluster/main.json');
+const expected1 = require('./scenarios/02_vault/json/vault-cluster/nodes.json');
 
 describe('helpers', () => {
   const basename = 'basename';
@@ -20,7 +20,7 @@ describe('helpers', () => {
 
       const expected = [{
         data: {
-          id: `${basename}/provider.aws`,
+          id: `${basename}/aws`,
           label: 'aws',
           type: 'provider',
           parent: basename,
@@ -40,7 +40,7 @@ describe('helpers', () => {
       const expected = [
         {
           data: {
-            id: `${basename}/module.master`,
+            id: `${basename}/master`,
             label: 'master',
             type: 'module',
             parent: basename,
@@ -48,7 +48,7 @@ describe('helpers', () => {
         },
         {
           data: {
-            id: `${basename}/module.replica`,
+            id: `${basename}/replica`,
             label: 'replica',
             type: 'module',
             parent: basename,
@@ -70,7 +70,7 @@ describe('helpers', () => {
       const expected = [
         {
           data: {
-            id: `${basename}/data.aws_vpc.default`,
+            id: `${basename}/aws_vpc.default`,
             label: 'aws_vpc.default',
             type: 'data',
             parent: basename,
@@ -78,7 +78,7 @@ describe('helpers', () => {
         },
         {
           data: {
-            id: `${basename}/data.aws_subnet_ids.all`,
+            id: `${basename}/aws_subnet_ids.all`,
             label: 'aws_subnet_ids.all',
             type: 'data',
             parent: basename,
@@ -86,7 +86,7 @@ describe('helpers', () => {
         },
         {
           data: {
-            id: `${basename}/data.aws_security_group.default`,
+            id: `${basename}/aws_security_group.default`,
             label: 'aws_security_group.default',
             type: 'data',
             parent: basename,
@@ -107,7 +107,7 @@ describe('helpers', () => {
       const expected = [
         {
           data: {
-            id: `${basename}/resource.resource1.name1`,
+            id: `${basename}/resource1.name1`,
             label: 'resource1.name1',
             type: 'resource',
             parent: basename,
@@ -115,7 +115,7 @@ describe('helpers', () => {
         },
         {
           data: {
-            id: `${basename}/resource.resource1.name2`,
+            id: `${basename}/resource1.name2`,
             label: 'resource1.name2',
             type: 'resource',
             parent: basename,
@@ -123,7 +123,7 @@ describe('helpers', () => {
         },
         {
           data: {
-            id: `${basename}/resource.resource2.name1`,
+            id: `${basename}/resource2.name1`,
             label: 'resource2.name1',
             type: 'resource',
             parent: basename,
@@ -134,12 +134,12 @@ describe('helpers', () => {
       expect(resourceTransformer(input, basename)).toEqual(expected);
     });
   });
-  // describe('transformer', () => {
-  //   it('should transform the sample', () => {
-  //     const input = sample1;
-  //     const expected = expected1;
+  describe('transformer', () => {
+    it('should transform the sample', () => {
+      const input = sample1;
+      const expected = expected1;
 
-  //     expect(transformer(input)).toEqual(expected);
-  //   });
-  // });
+      expect(transformer(input, 'basename')).toEqual(expected);
+    });
+  });
 });

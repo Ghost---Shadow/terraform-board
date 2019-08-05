@@ -1,0 +1,106 @@
+[
+  {
+    "data": {
+      "id": "basename/aws_autoscaling_group.autoscaling_group",
+      "label": "aws_autoscaling_group.autoscaling_group",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_launch_configuration.launch_configuration",
+      "label": "aws_launch_configuration.launch_configuration",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group.lc_security_group",
+      "label": "aws_security_group.lc_security_group",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks",
+      "label": "aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group_rule.allow_ssh_inbound_from_security_group_ids",
+      "label": "aws_security_group_rule.allow_ssh_inbound_from_security_group_ids",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group_rule.allow_all_outbound",
+      "label": "aws_security_group_rule.allow_all_outbound",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_instance_profile.instance_profile",
+      "label": "aws_iam_instance_profile.instance_profile",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_role.instance_role",
+      "label": "aws_iam_role.instance_role",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_s3_bucket.vault_storage",
+      "label": "aws_s3_bucket.vault_storage",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_role_policy.vault_s3",
+      "label": "aws_iam_role_policy.vault_s3",
+      "type": "resource",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/security_group_rules",
+      "label": "security_group_rules",
+      "type": "module",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_policy_document.instance_role",
+      "label": "aws_iam_policy_document.instance_role",
+      "type": "data",
+      "parent": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_policy_document.vault_s3",
+      "label": "aws_iam_policy_document.vault_s3",
+      "type": "data",
+      "parent": "basename"
+    }
+  }
+]

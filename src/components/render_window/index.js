@@ -58,10 +58,12 @@ class RendererWindow extends React.Component {
 
   render() {
     const { elements, width, height } = this.props;
+    if (!elements.length) return <div />;
     return (
       <CytoscapeComponent
         elements={elements}
-        layout={{ name: 'cose' }}
+        layout={{ name: 'cose', numIter: 99999 }}
+        // layout={{ name: 'fcose' }}
         style={{ width, height }}
         stylesheet={stylesheet}
         cy={(cy) => { this.cy = cy; }}

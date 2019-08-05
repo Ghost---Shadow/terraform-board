@@ -6,6 +6,7 @@ const express = require('express');
 const path = require('path');
 
 const { transformer } = require('./helpers');
+const { generateEdges } = require('./edge-mapper');
 const { walk } = require('./walker');
 
 const app = express();
@@ -21,7 +22,7 @@ app.get('/api/graph', (req, res) => {
     console.log('Parsing', filename);
     const basename = path.basename(path.dirname(filename));
     const source = fs.readFileSync(filename);
-    const result = hcl.parse(source);
+    const parsedSource = hcl.parse(source);
     const baseNodes = [];
     if (basenames.indexOf(basename) === -1) {
       basenames.push(basename);
@@ -33,8 +34,9 @@ app.get('/api/graph', (req, res) => {
         },
       });
     }
-    const transformedGraph = transformer(result, basename);
-    return baseNodes.concat(transformedGraph);
+    const nodes = transformer(parsedSource, basename);
+    const edges = generateEdges(parsedSource, basename);
+    return baseNodes.concat(nodes).concat(edges);
   });
 
   res.send(allGraphs.reduce((acc, next) => acc.concat(next)));

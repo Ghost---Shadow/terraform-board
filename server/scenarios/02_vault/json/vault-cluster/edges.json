@@ -1,0 +1,86 @@
+[
+  {
+    "data": {
+      "id": "basename/aws_launch_configuration.launch_configuration->basename/aws_autoscaling_group.autoscaling_group",
+      "source": "basename/aws_launch_configuration.launch_configuration",
+      "target": "basename/aws_autoscaling_group.autoscaling_group"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_instance_profile.instance_profile->basename/aws_launch_configuration.launch_configuration",
+      "source": "basename/aws_iam_instance_profile.instance_profile",
+      "target": "basename/aws_launch_configuration.launch_configuration"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group.lc_security_group->basename/aws_launch_configuration.launch_configuration",
+      "source": "basename/aws_security_group.lc_security_group",
+      "target": "basename/aws_launch_configuration.launch_configuration"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group.lc_security_group->basename/aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks",
+      "source": "basename/aws_security_group.lc_security_group",
+      "target": "basename/aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group.lc_security_group->basename/aws_security_group_rule.allow_ssh_inbound_from_security_group_ids",
+      "source": "basename/aws_security_group.lc_security_group",
+      "target": "basename/aws_security_group_rule.allow_ssh_inbound_from_security_group_ids"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group.lc_security_group->basename/aws_security_group_rule.allow_all_outbound",
+      "source": "basename/aws_security_group.lc_security_group",
+      "target": "basename/aws_security_group_rule.allow_all_outbound"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_role.instance_role->basename/aws_iam_instance_profile.instance_profile",
+      "source": "basename/aws_iam_role.instance_role",
+      "target": "basename/aws_iam_instance_profile.instance_profile"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_policy_document.instance_role->basename/aws_iam_role.instance_role",
+      "source": "basename/aws_iam_policy_document.instance_role",
+      "target": "basename/aws_iam_role.instance_role"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_role.instance_role->basename/aws_iam_role_policy.vault_s3",
+      "source": "basename/aws_iam_role.instance_role",
+      "target": "basename/aws_iam_role_policy.vault_s3"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_iam_policy_document.vault_s3->basename/aws_iam_role_policy.vault_s3",
+      "source": "basename/aws_iam_policy_document.vault_s3",
+      "target": "basename/aws_iam_role_policy.vault_s3"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_security_group.lc_security_group->basename/security_group_rules",
+      "source": "basename/aws_security_group.lc_security_group",
+      "target": "basename/security_group_rules"
+    }
+  },
+  {
+    "data": {
+      "id": "basename/aws_s3_bucket.vault_storage->basename/aws_iam_policy_document.vault_s3",
+      "source": "basename/aws_s3_bucket.vault_storage",
+      "target": "basename/aws_iam_policy_document.vault_s3"
+    }
+  }
+]

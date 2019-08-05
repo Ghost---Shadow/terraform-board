@@ -2,7 +2,7 @@ const twoLevelTransformer = (obj, type, basename) => (
   Object.keys(obj).map(label => (
     {
       data: {
-        id: `${basename}/${type}.${label}`,
+        id: `${basename}/${label}`,
         label,
         type,
         parent: basename,
@@ -17,7 +17,7 @@ const threeLevelTransformer = (obj, type, basename) => (
       .map(key2 => (
         {
           data: {
-            id: `${basename}/${type}.${key1}.${key2}`,
+            id: `${basename}/${key1}.${key2}`,
             label: `${key1}.${key2}`,
             type,
             parent: basename,

@@ -1,6 +1,4 @@
 - Edge generation logic
-  - id: module1.module2:resource.aws_ec2.default
-  - Key lookup within a module (source: resource.aws_ec2.default, target: self)
   - Key lookup outside modules (source: module.out_var, target: self)
 - Details
   - Show side bar with details (all the configs)
