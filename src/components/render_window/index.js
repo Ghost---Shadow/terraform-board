@@ -41,6 +41,7 @@ const stylesheet = [
     selector: 'edge',
     style: {
       'line-color': '#999',
+      'curve-style': 'straight',
       // label: ele => ele.data('id'),
     },
   },

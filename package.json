@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.3.0",
-    "cytoscape": "^3.8.2",
+    "cytoscape": "Ghost---Shadow/cytoscape.js#unstable",
     "cytoscape-cise": "^1.0.0",
     "cytoscape-cose-bilkent": "^4.0.0",
     "cytoscape-dagre": "^2.2.2",
@@ -20,7 +20,7 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-cytoscapejs": "^1.1.0",
+    "react-cytoscapejs": "Ghost---Shadow/react-cytoscapejs#master",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "styled-components": "^4.3.2"
