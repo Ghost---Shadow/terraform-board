@@ -1,7 +1,6 @@
 {
   "name": "terraboard",
   "version": "0.1.0",
-  "private": true,
   "bin": {
     "terraboard": "server/index.js"
   },
