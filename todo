@@ -1,6 +1,9 @@
+- Merge all parsed objects inside a folder
+- Group all key1s
 - Edge generation logic
   - Key lookup outside modules (source: module.out_var, target: self)
 - Details
   - Show side bar with details (all the configs)
 - Collapsible nodes
   - ???
+- Highlight all affected nodes for a var

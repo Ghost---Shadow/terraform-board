@@ -33,7 +33,7 @@ const generateEdges = (obj, basename) => {
       const k = extractEdge(flatObj[key]);
       const validKey = getValidKey(k);
       const validValue = getValidKey(key);
-      if (validKey) {
+      if (validKey && validValue) {
         return {
           data: {
             id: `${basename}/${validKey}->${basename}/${validValue}`,
