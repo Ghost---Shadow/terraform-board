@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
-// import fcose from 'cytoscape-fcose';
-import cose from 'cytoscape-cose-bilkent';
 import CytoscapeComponent from 'react-cytoscapejs';
+// import fcose from 'cytoscape-fcose';
+// import cose from 'cytoscape-cose-bilkent';
+// import cise from 'cytoscape-cise';
+import dagre from 'cytoscape-dagre';
+// const klay = require('cytoscape-klay');
 
 // cytoscape.use(fcose);
-cytoscape.use(cose);
+// cytoscape.use(cose);
+// cytoscape.use(cise);
+cytoscape.use(dagre);
+// cytoscape.use(klay);
 
 const nodeColorLookup = {
   provider: '#f9ab00',
@@ -34,7 +40,7 @@ const stylesheet = [
   {
     selector: 'edge',
     style: {
-      'line-color': '#333',
+      'line-color': '#999',
       // label: ele => ele.data('id'),
     },
   },
@@ -62,8 +68,13 @@ class RendererWindow extends React.Component {
     return (
       <CytoscapeComponent
         elements={elements}
-        layout={{ name: 'cose', numIter: 99999 }}
-        // layout={{ name: 'fcose' }}
+        // layout={{ name: 'grid' }}
+        // layout={{ name: 'cose', numIter: 9999999999999999 }}
+        // layout={{ name: 'fcose', numIter: 9999999999999999 }}
+        // layout={{ name: 'breadthfirst', nodeDimensionsIncludeLabels: true, maximal: true }}
+        // layout={{ name: 'cise' }}
+        layout={{ name: 'dagre', nodeDimensionsIncludeLabels: true }}
+        // layout={{ name: 'klay' }}
         style={{ width, height }}
         stylesheet={stylesheet}
         cy={(cy) => { this.cy = cy; }}

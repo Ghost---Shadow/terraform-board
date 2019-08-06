@@ -1,4 +1,4 @@
-- Layouting bugs
+- Filewise grouping
 - Edge generation logic
   - Key lookup outside modules (source: module.out_var, target: self)
 - Details
