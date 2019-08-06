@@ -13,17 +13,28 @@ const twoLevelTransformer = (obj, type, basename) => (
 
 const threeLevelTransformer = (obj, type, basename) => (
   Object.keys(obj)
-    .map(key1 => Object.keys(obj[key1])
-      .map(key2 => (
-        {
-          data: {
-            id: `${basename}/${key1}.${key2}`,
-            label: `${key1}.${key2}`,
-            type,
-            parent: basename,
-          },
-        }
-      )))
+    .map((key1) => {
+      const group = [{
+        data: {
+          id: `${basename}/${key1}`,
+          label: `${key1}`,
+          type,
+          parent: basename,
+        },
+      }];
+      const actual = Object.keys(obj[key1])
+        .map(key2 => (
+          {
+            data: {
+              id: `${basename}/${key1}.${key2}`,
+              label: key2,
+              type,
+              parent: `${basename}/${key1}`,
+            },
+          }
+        ));
+      return group.concat(actual);
+    })
     .reduce((acc, next) => (
       acc.concat(next)
     ), [])

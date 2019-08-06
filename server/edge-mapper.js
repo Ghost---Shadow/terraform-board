@@ -2,10 +2,16 @@ const _ = require('lodash');
 const flat = require('flat');
 
 const depthMap = {
-  resource: 3,
-  data: 3,
+  provider: 2,
   module: 2,
+  data: 3,
+  resource: 3,
   var: 1,
+
+  // TODO: Unused
+  locals: 1,
+  output: 1,
+  terraform: 1,
 };
 
 const extractEdge = value => _.get(`${value}`.match(/^\$\{(.*)\}$/), 1);
