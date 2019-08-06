@@ -1,6 +1,6 @@
 {
   "name": "terraboard",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "bin": {
     "terraboard": "server/index.js"
   },
@@ -39,8 +39,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "build_and_publish": "yarn build; npm publish",
-    "build_and_link": "yarn build; npm link"
+    "build_and_publish": "npm run build; npm publish",
+    "build_and_link": "npm run build; npm link"
   },
   "eslintConfig": {
     "extends": "react-app"
