@@ -1,8 +1,9 @@
-- Filewise grouping
+- fsstat Crash fix
 - Edge generation logic
   - Key lookup outside modules (source: module.out_var, target: self)
 - Details
   - Show side bar with details (all the configs)
 - Collapsible nodes
+  - Meta edges
   - ???
 - Highlight all affected nodes for a var

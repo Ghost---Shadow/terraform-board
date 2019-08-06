@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "flat": "^4.1.0",
     "gopher-hcl": "^0.2.0",
+    "jest-file-snapshot": "^0.3.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

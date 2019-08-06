@@ -1,25 +1,25 @@
-const twoLevelTransformer = (obj, type, basename) => (
+const twoLevelTransformer = (obj, type, basename, filename) => (
   Object.keys(obj).map(label => (
     {
       data: {
         id: `${basename}/${label}`,
         label,
         type,
-        parent: basename,
+        parent: `${basename}/${filename}`,
       },
     }
   ))
 );
 
-const threeLevelTransformer = (obj, type, basename) => (
+const threeLevelTransformer = (obj, type, basename, filename) => (
   Object.keys(obj)
     .map((key1) => {
       const group = [{
         data: {
-          id: `${basename}/${key1}`,
+          id: `${basename}/${filename}/${key1}`,
           label: `${key1}`,
           type,
-          parent: basename,
+          parent: `${basename}/${filename}`,
         },
       }];
       const actual = Object.keys(obj[key1])
@@ -29,7 +29,7 @@ const threeLevelTransformer = (obj, type, basename) => (
               id: `${basename}/${key1}.${key2}`,
               label: key2,
               type,
-              parent: `${basename}/${key1}`,
+              parent: `${basename}/${filename}/${key1}`,
             },
           }
         ));
@@ -40,16 +40,16 @@ const threeLevelTransformer = (obj, type, basename) => (
     ), [])
 );
 
-const providerTransformer = (obj, basename) => twoLevelTransformer(obj, 'provider', basename);
-const moduleTransformer = (obj, basename) => twoLevelTransformer(obj, 'module', basename);
-const dataTransformer = (obj, basename) => threeLevelTransformer(obj, 'data', basename);
-const resourceTransformer = (obj, basename) => threeLevelTransformer(obj, 'resource', basename);
+const providerTransformer = (obj, basename, filename) => twoLevelTransformer(obj, 'provider', basename, filename);
+const moduleTransformer = (obj, basename, filename) => twoLevelTransformer(obj, 'module', basename, filename);
+const dataTransformer = (obj, basename, filename) => threeLevelTransformer(obj, 'data', basename, filename);
+const resourceTransformer = (obj, basename, filename) => threeLevelTransformer(obj, 'resource', basename, filename);
 const localsTransformer = () => []; // TODO
 const outputTransformer = () => []; // TODO
 const variableTransformer = () => []; // TODO
 const terraformTransformer = () => []; // TODO
 
-const transformer = (obj, basename) => {
+const transformer = (obj, basename, filename) => {
   const level1 = Object.keys(obj);
 
   const typeLookupFun = (type, subObj) => {
@@ -66,7 +66,7 @@ const transformer = (obj, basename) => {
     const fun = typeLookup[type];
     if (!fun) { throw new Error(`Unknown type ${type}`); }
 
-    return fun(subObj, basename);
+    return fun(subObj, basename, filename);
   };
 
   return level1

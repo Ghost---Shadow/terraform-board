@@ -6,7 +6,7 @@ const express = require('express');
 const path = require('path');
 const _ = require('lodash');
 
-const { transformer } = require('./helpers');
+const { transformer } = require('./node-mapper');
 const { generateEdges } = require('./edge-mapper');
 const { walk } = require('./walker');
 
@@ -32,16 +32,27 @@ app.get('/api/graph', (req, res) => {
         type: 'basename',
       },
     }];
+    const fileNodes = [];
+    let nodes = [];
     const allElements = basenameMap[basename].reduce((acc, filename) => {
       console.log('Parsing', filename);
+      const fname = path.basename(filename);
+      fileNodes.push({
+        data: {
+          id: `${basename}/${fname}`,
+          label: fname,
+          type: 'fname',
+          parent: basename,
+        },
+      });
       const source = fs.readFileSync(filename);
       const parsedSource = hcl.parse(source);
+      const extractedNodes = transformer(parsedSource, basename, fname);
+      nodes = nodes.concat(extractedNodes);
       return _.merge(acc, parsedSource);
     }, {});
-
-    const nodes = transformer(allElements, basename);
     const edges = generateEdges(allElements, basename);
-    return baseNodes.concat(nodes).concat(edges);
+    return baseNodes.concat(fileNodes).concat(nodes).concat(edges);
   });
   res.send(allGraphs.reduce((acc, next) => acc.concat(next)));
 });
