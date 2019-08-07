@@ -30,12 +30,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:server": "jest --watch",
+    "test:publish": "CI=true jest",
     "test:server:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "build_and_publish": "npm run build; npm publish",
-    "build_and_link": "npm run build; npm link"
+    "build_and_link": "npm run build; npm link",
+    "prepublishOnly": "npm run test:publish && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

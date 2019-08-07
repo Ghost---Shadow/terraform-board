@@ -1,13 +1,15 @@
+- create projects
+  - link to a git
+  - terraform plan and pretty show 
+  - terraform approve the plan
+- Bug: Edges appearing on top of labels
 - Increase spacing for nodes in same rank
+    - Add ghost edges
 - Edge generation logic
   - Key lookup outside modules, link to the module block instead of creating a new node
 - Details
   - Show side bar with details (all the configs)
 - Collapsible nodes
   - Meta edges
-  - ???
+  - https://github.com/iVis-at-Bilkent/cytoscape.js-expand-collapse
 - Highlight all affected nodes for a var
-- create projects
-  - link to a git
-  - terraform plan and pretty show 
-  - terraform approve the plan
