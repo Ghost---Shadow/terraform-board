@@ -8,6 +8,7 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
+    "body-parser": "^1.19.0",
     "cytoscape": "Ghost---Shadow/cytoscape.js#unstable",
     "cytoscape-dagre": "^2.2.2",
     "express": "^4.17.1",

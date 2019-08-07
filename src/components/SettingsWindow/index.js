@@ -1,76 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 import 'typeface-roboto';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
-  menu: {
-    width: 200,
-  },
-  button: {
-    margin: theme.spacing(1),
-  },
-  input: {
-    display: 'none',
-  },
-}));
+import LabelAndButton from './LabelAndButton';
+import useStyles from './styles';
 
-const LabelAndButton = ({ title }) => {
-  const classes = useStyles();
-
-  return (
-    <label htmlFor={`${title}-contained-button-file`}>
-      <Grid container direction="row" alignItems="center">
-        <Grid item xs={3}>
-          <Typography variant="body1" align="center">
-            {title}
-          </Typography>
-        </Grid>
-        <Grid item xs={3}>
-          <input
-            accept="image/*"
-            className={classes.input}
-            id={`${title}-contained-button-file`}
-            multiple
-            type="file"
-          />
-          <Button variant="contained" color="primary" component="span" className={classes.button}>
-            Upload
-          </Button>
-        </Grid>
-      </Grid>
-    </label>
-  );
-};
-
-LabelAndButton.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+import {
+  onAwsCredentialsChange,
+  onGithubCredentialsChange,
+  onGitClone,
+} from './api';
 
 export default function OutlinedTextFields() {
   const classes = useStyles();
+  const [githubUrl, setGithubUrl] = useState('');
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <Grid container direction="column" spacing={3}>
-        <LabelAndButton title="AWS credentials" />
-        <LabelAndButton title="Github credentials" />
+        <LabelAndButton title="AWS credentials" onChange={onAwsCredentialsChange} />
+        <LabelAndButton title="Github credentials" onChange={onGithubCredentialsChange} />
         <Grid container direction="row" alignItems="center">
           <Grid item xs={3}>
             <TextField
@@ -81,13 +33,18 @@ export default function OutlinedTextFields() {
               margin="normal"
               fullWidth
               variant="outlined"
-              InputLabelProps={{
-                shrink: true,
-              }}
+              InputLabelProps={{ shrink: true }}
+              onChange={e => setGithubUrl(e.target.value)}
             />
           </Grid>
           <Grid item xs={3}>
-            <Button color="primary" variant="contained" component="span" className={classes.button}>
+            <Button
+              color="primary"
+              variant="contained"
+              component="span"
+              className={classes.button}
+              onClick={() => onGitClone(githubUrl)}
+            >
               Clone or pull
             </Button>
           </Grid>

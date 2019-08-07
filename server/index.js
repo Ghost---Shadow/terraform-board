@@ -2,6 +2,7 @@
 
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const {
   uploadAwsCredentials,
@@ -12,6 +13,7 @@ const {
 const { getGraph } = require('./graph');
 
 const app = express();
+app.use(bodyParser.json({ limit: 99999999999 }));
 const port = 3001;
 
 app.get('/api/graph', getGraph);
