@@ -18,6 +18,7 @@ const TabPanel = (props) => {
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
+      key={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
@@ -52,9 +53,15 @@ const TitleBar = ({ contents }) => {
     setValue(newValue);
   }
 
-  const tabs = contents.map((item, index) => (<Tab label={item.title} {...a11yProps(index)} />));
+  const tabs = contents.map((item, index) => (
+    <Tab
+      key={`Tab-${item.title}`}
+      label={item.title}
+      {...a11yProps(index)}
+    />
+  ));
   const tabPanels = contents.map((item, index) => (
-    <TabPanel value={value} index={index}>
+    <TabPanel value={value} index={index} key={`TabPanel-${item.title}`}>
       {item.component}
     </TabPanel>
   ));
@@ -73,7 +80,7 @@ const TitleBar = ({ contents }) => {
 TitleBar.propTypes = {
   contents: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    component: PropTypes.string.isRequired,
+    component: PropTypes.node.isRequired,
   })).isRequired,
 };
 

@@ -39,7 +39,7 @@ const stylesheet = [
   },
 ];
 
-class RendererWindow extends React.Component {
+class RenderWindow extends React.Component {
   constructor(props) {
     super(props);
 
@@ -70,7 +70,7 @@ class RendererWindow extends React.Component {
   }
 }
 
-RendererWindow.propTypes = {
+RenderWindow.propTypes = {
   elements: PropTypes.arrayOf(
     PropTypes.shape({
       group: PropTypes.string,
@@ -82,9 +82,9 @@ RendererWindow.propTypes = {
   height: PropTypes.number,
 };
 
-RendererWindow.defaultProps = {
+RenderWindow.defaultProps = {
   width: window.innerWidth,
   height: window.innerHeight,
 };
 
-export default RendererWindow;
+export default RenderWindow;
