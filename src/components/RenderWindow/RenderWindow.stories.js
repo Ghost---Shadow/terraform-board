@@ -6,7 +6,7 @@ import RendererWindow from './index';
 
 const defaultSample = require('./samples/default');
 const groupingSample = require('./samples/grouping');
-const bigSample = require('../../../server/scenarios/02_vault/json/vault-cluster/total.json');
+const bigSample = require('./samples/big.json');
 
 storiesOf('RendererWindow', module)
   .addDecorator(withKnobs)

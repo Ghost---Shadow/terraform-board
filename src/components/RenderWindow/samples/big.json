@@ -1,0 +1,645 @@
+[
+  {
+    "data": {
+      "id": "private-tls-cert",
+      "label": "private-tls-cert",
+      "type": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/main.tf",
+      "label": "main.tf",
+      "type": "fname",
+      "parent": "private-tls-cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/outputs.tf",
+      "label": "outputs.tf",
+      "type": "fname",
+      "parent": "private-tls-cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/variables.tf",
+      "label": "variables.tf",
+      "type": "fname",
+      "parent": "private-tls-cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/main.tf/tls_private_key",
+      "label": "tls_private_key",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.ca",
+      "label": "ca",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf/tls_private_key"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.cert",
+      "label": "cert",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf/tls_private_key"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/main.tf/tls_self_signed_cert",
+      "label": "tls_self_signed_cert",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_self_signed_cert.ca",
+      "label": "ca",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf/tls_self_signed_cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/main.tf/tls_cert_request",
+      "label": "tls_cert_request",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_cert_request.cert",
+      "label": "cert",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf/tls_cert_request"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/main.tf/tls_locally_signed_cert",
+      "label": "tls_locally_signed_cert",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_locally_signed_cert.cert",
+      "label": "cert",
+      "type": "resource",
+      "parent": "private-tls-cert/main.tf/tls_locally_signed_cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.ca->private-tls-cert/tls_self_signed_cert.ca",
+      "source": "private-tls-cert/tls_private_key.ca",
+      "target": "private-tls-cert/tls_self_signed_cert.ca"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.ca->private-tls-cert/tls_self_signed_cert.ca",
+      "source": "private-tls-cert/tls_private_key.ca",
+      "target": "private-tls-cert/tls_self_signed_cert.ca"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.cert->private-tls-cert/tls_cert_request.cert",
+      "source": "private-tls-cert/tls_private_key.cert",
+      "target": "private-tls-cert/tls_cert_request.cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.cert->private-tls-cert/tls_cert_request.cert",
+      "source": "private-tls-cert/tls_private_key.cert",
+      "target": "private-tls-cert/tls_cert_request.cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_cert_request.cert->private-tls-cert/tls_locally_signed_cert.cert",
+      "source": "private-tls-cert/tls_cert_request.cert",
+      "target": "private-tls-cert/tls_locally_signed_cert.cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.ca->private-tls-cert/tls_locally_signed_cert.cert",
+      "source": "private-tls-cert/tls_private_key.ca",
+      "target": "private-tls-cert/tls_locally_signed_cert.cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_private_key.ca->private-tls-cert/tls_locally_signed_cert.cert",
+      "source": "private-tls-cert/tls_private_key.ca",
+      "target": "private-tls-cert/tls_locally_signed_cert.cert"
+    }
+  },
+  {
+    "data": {
+      "id": "private-tls-cert/tls_self_signed_cert.ca->private-tls-cert/tls_locally_signed_cert.cert",
+      "source": "private-tls-cert/tls_self_signed_cert.ca",
+      "target": "private-tls-cert/tls_locally_signed_cert.cert"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster",
+      "label": "vault-cluster",
+      "type": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf",
+      "label": "main.tf",
+      "type": "fname",
+      "parent": "vault-cluster"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/outputs.tf",
+      "label": "outputs.tf",
+      "type": "fname",
+      "parent": "vault-cluster"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/variables.tf",
+      "label": "variables.tf",
+      "type": "fname",
+      "parent": "vault-cluster"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_autoscaling_group",
+      "label": "aws_autoscaling_group",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_autoscaling_group.autoscaling_group",
+      "label": "autoscaling_group",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_autoscaling_group"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_launch_configuration",
+      "label": "aws_launch_configuration",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_launch_configuration.launch_configuration",
+      "label": "launch_configuration",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_launch_configuration"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_security_group",
+      "label": "aws_security_group",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group.lc_security_group",
+      "label": "lc_security_group",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_security_group"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_security_group_rule",
+      "label": "aws_security_group_rule",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks",
+      "label": "allow_ssh_inbound_from_cidr_blocks",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group_rule.allow_ssh_inbound_from_security_group_ids",
+      "label": "allow_ssh_inbound_from_security_group_ids",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group_rule.allow_all_outbound",
+      "label": "allow_all_outbound",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_iam_instance_profile",
+      "label": "aws_iam_instance_profile",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_instance_profile.instance_profile",
+      "label": "instance_profile",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_iam_instance_profile"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_iam_role",
+      "label": "aws_iam_role",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_role.instance_role",
+      "label": "instance_role",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_iam_role"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_s3_bucket",
+      "label": "aws_s3_bucket",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_s3_bucket.vault_storage",
+      "label": "vault_storage",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_s3_bucket"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_iam_role_policy",
+      "label": "aws_iam_role_policy",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_role_policy.vault_s3",
+      "label": "vault_s3",
+      "type": "resource",
+      "parent": "vault-cluster/main.tf/aws_iam_role_policy"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/security_group_rules",
+      "label": "security_group_rules",
+      "type": "module",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/main.tf/aws_iam_policy_document",
+      "label": "aws_iam_policy_document",
+      "type": "data",
+      "parent": "vault-cluster/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_policy_document.instance_role",
+      "label": "instance_role",
+      "type": "data",
+      "parent": "vault-cluster/main.tf/aws_iam_policy_document"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_policy_document.vault_s3",
+      "label": "vault_s3",
+      "type": "data",
+      "parent": "vault-cluster/main.tf/aws_iam_policy_document"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_launch_configuration.launch_configuration->vault-cluster/aws_autoscaling_group.autoscaling_group",
+      "source": "vault-cluster/aws_launch_configuration.launch_configuration",
+      "target": "vault-cluster/aws_autoscaling_group.autoscaling_group"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_instance_profile.instance_profile->vault-cluster/aws_launch_configuration.launch_configuration",
+      "source": "vault-cluster/aws_iam_instance_profile.instance_profile",
+      "target": "vault-cluster/aws_launch_configuration.launch_configuration"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group.lc_security_group->vault-cluster/aws_launch_configuration.launch_configuration",
+      "source": "vault-cluster/aws_security_group.lc_security_group",
+      "target": "vault-cluster/aws_launch_configuration.launch_configuration"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group.lc_security_group->vault-cluster/aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks",
+      "source": "vault-cluster/aws_security_group.lc_security_group",
+      "target": "vault-cluster/aws_security_group_rule.allow_ssh_inbound_from_cidr_blocks"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group.lc_security_group->vault-cluster/aws_security_group_rule.allow_ssh_inbound_from_security_group_ids",
+      "source": "vault-cluster/aws_security_group.lc_security_group",
+      "target": "vault-cluster/aws_security_group_rule.allow_ssh_inbound_from_security_group_ids"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group.lc_security_group->vault-cluster/aws_security_group_rule.allow_all_outbound",
+      "source": "vault-cluster/aws_security_group.lc_security_group",
+      "target": "vault-cluster/aws_security_group_rule.allow_all_outbound"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_role.instance_role->vault-cluster/aws_iam_instance_profile.instance_profile",
+      "source": "vault-cluster/aws_iam_role.instance_role",
+      "target": "vault-cluster/aws_iam_instance_profile.instance_profile"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_policy_document.instance_role->vault-cluster/aws_iam_role.instance_role",
+      "source": "vault-cluster/aws_iam_policy_document.instance_role",
+      "target": "vault-cluster/aws_iam_role.instance_role"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_role.instance_role->vault-cluster/aws_iam_role_policy.vault_s3",
+      "source": "vault-cluster/aws_iam_role.instance_role",
+      "target": "vault-cluster/aws_iam_role_policy.vault_s3"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_iam_policy_document.vault_s3->vault-cluster/aws_iam_role_policy.vault_s3",
+      "source": "vault-cluster/aws_iam_policy_document.vault_s3",
+      "target": "vault-cluster/aws_iam_role_policy.vault_s3"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_security_group.lc_security_group->vault-cluster/security_group_rules",
+      "source": "vault-cluster/aws_security_group.lc_security_group",
+      "target": "vault-cluster/security_group_rules"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-cluster/aws_s3_bucket.vault_storage->vault-cluster/aws_iam_policy_document.vault_s3",
+      "source": "vault-cluster/aws_s3_bucket.vault_storage",
+      "target": "vault-cluster/aws_iam_policy_document.vault_s3"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb",
+      "label": "vault-elb",
+      "type": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/main.tf",
+      "label": "main.tf",
+      "type": "fname",
+      "parent": "vault-elb"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/outputs.tf",
+      "label": "outputs.tf",
+      "type": "fname",
+      "parent": "vault-elb"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/variables.tf",
+      "label": "variables.tf",
+      "type": "fname",
+      "parent": "vault-elb"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/main.tf/aws_elb",
+      "label": "aws_elb",
+      "type": "resource",
+      "parent": "vault-elb/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_elb.vault",
+      "label": "vault",
+      "type": "resource",
+      "parent": "vault-elb/main.tf/aws_elb"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/main.tf/aws_security_group",
+      "label": "aws_security_group",
+      "type": "resource",
+      "parent": "vault-elb/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_security_group.vault",
+      "label": "vault",
+      "type": "resource",
+      "parent": "vault-elb/main.tf/aws_security_group"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/main.tf/aws_security_group_rule",
+      "label": "aws_security_group_rule",
+      "type": "resource",
+      "parent": "vault-elb/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_security_group_rule.allow_inbound_api",
+      "label": "allow_inbound_api",
+      "type": "resource",
+      "parent": "vault-elb/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_security_group_rule.allow_all_outbound",
+      "label": "allow_all_outbound",
+      "type": "resource",
+      "parent": "vault-elb/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/main.tf/aws_route53_record",
+      "label": "aws_route53_record",
+      "type": "resource",
+      "parent": "vault-elb/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_route53_record.vault_elb",
+      "label": "vault_elb",
+      "type": "resource",
+      "parent": "vault-elb/main.tf/aws_route53_record"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_security_group.vault->vault-elb/aws_elb.vault",
+      "source": "vault-elb/aws_security_group.vault",
+      "target": "vault-elb/aws_elb.vault"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_security_group.vault->vault-elb/aws_security_group_rule.allow_inbound_api",
+      "source": "vault-elb/aws_security_group.vault",
+      "target": "vault-elb/aws_security_group_rule.allow_inbound_api"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_security_group.vault->vault-elb/aws_security_group_rule.allow_all_outbound",
+      "source": "vault-elb/aws_security_group.vault",
+      "target": "vault-elb/aws_security_group_rule.allow_all_outbound"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_elb.vault->vault-elb/aws_route53_record.vault_elb",
+      "source": "vault-elb/aws_elb.vault",
+      "target": "vault-elb/aws_route53_record.vault_elb"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-elb/aws_elb.vault->vault-elb/aws_route53_record.vault_elb",
+      "source": "vault-elb/aws_elb.vault",
+      "target": "vault-elb/aws_route53_record.vault_elb"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules",
+      "label": "vault-security-group-rules",
+      "type": "basename"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules/main.tf",
+      "label": "main.tf",
+      "type": "fname",
+      "parent": "vault-security-group-rules"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules/variables.tf",
+      "label": "variables.tf",
+      "type": "fname",
+      "parent": "vault-security-group-rules"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules/main.tf/aws_security_group_rule",
+      "label": "aws_security_group_rule",
+      "type": "resource",
+      "parent": "vault-security-group-rules/main.tf"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules/aws_security_group_rule.allow_api_inbound_from_cidr_blocks",
+      "label": "allow_api_inbound_from_cidr_blocks",
+      "type": "resource",
+      "parent": "vault-security-group-rules/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules/aws_security_group_rule.allow_api_inbound_from_security_group_ids",
+      "label": "allow_api_inbound_from_security_group_ids",
+      "type": "resource",
+      "parent": "vault-security-group-rules/main.tf/aws_security_group_rule"
+    }
+  },
+  {
+    "data": {
+      "id": "vault-security-group-rules/aws_security_group_rule.allow_cluster_inbound_from_self",
+      "label": "allow_cluster_inbound_from_self",
+      "type": "resource",
+      "parent": "vault-security-group-rules/main.tf/aws_security_group_rule"
+    }
+  }
+]

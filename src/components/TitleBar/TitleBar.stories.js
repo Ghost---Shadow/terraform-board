@@ -7,7 +7,7 @@ import SettingsWindow from '../SettingsWindow';
 import PlanAndApply from '../PlanAndApply';
 import RenderWindow from '../RenderWindow';
 
-const bigSample = require('../../../server/scenarios/02_vault/json/vault-cluster/total.json');
+const bigSample = require('../RenderWindow/samples/big.json');
 
 const contents = [
   { title: 'Settings', component: <div>Settings component</div> },
