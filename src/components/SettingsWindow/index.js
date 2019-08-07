@@ -87,8 +87,8 @@ export default function OutlinedTextFields() {
             />
           </Grid>
           <Grid item xs={3}>
-            <Button color="primary" component="span" className={classes.button}>
-              Save
+            <Button color="primary" variant="contained" component="span" className={classes.button}>
+              Clone or pull
             </Button>
           </Grid>
         </Grid>
