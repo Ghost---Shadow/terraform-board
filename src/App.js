@@ -1,9 +1,19 @@
 import React from 'react';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
 import './App.css';
 import RenderWindow from './components/RenderWindow';
 import SettingsWindow from './components/SettingsWindow';
 import PlanAndApply from './components/PlanAndApply';
 import TitleBar from './components/TitleBar';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#f3923d', contrastText: '#fff' },
+    secondary: { main: '#ffffff' },
+  },
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -32,7 +42,9 @@ class App extends React.Component {
     ];
 
     return (
-      <TitleBar contents={contents} />
+      <ThemeProvider theme={theme}>
+        <TitleBar contents={contents} />
+      </ThemeProvider>
     );
   }
 }
