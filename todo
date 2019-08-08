@@ -1,8 +1,7 @@
 - create projects
-  - link to a git
-  - terraform plan and pretty show 
-  - terraform approve the plan
+  - terraform init, plan and apply
 - Bug: Edges appearing on top of labels
+- Route for each tab
 - Increase spacing for nodes in same rank
     - Add ghost edges
 - Edge generation logic

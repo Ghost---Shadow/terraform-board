@@ -1,8 +1,8 @@
 {
-  "name": "terraboard",
+  "name": "terraform-board",
   "version": "0.3.0",
   "bin": {
-    "terraboard": "server/index.js"
+    "terraform-board": "server/index.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ghost---Shadow/terraboard"
+    "url": "https://github.com/Ghost---Shadow/terraform-board"
   },
   "scripts": {
     "start": "react-scripts start",

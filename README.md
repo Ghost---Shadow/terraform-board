@@ -1,16 +1,18 @@
-# Terraboard (WIP)
+# Terraform Board (WIP)
 
-Inspired by [tensorboard](https://www.tensorflow.org/images/graph_vis_animation.gif). Terraboard is a visualizer and IDE for terraform.
+Inspired by [tensorboard](https://www.tensorflow.org/images/graph_vis_animation.gif). Terraform Board is a visualizer and IDE for terraform.
+
+Not to be confused with [terraboard](https://github.com/camptocamp/terraboard)
 
 Here is the visualization of [terraform-aws-vault](https://github.com/hashicorp/terraform-aws-vault) as an example.
 
-![](./documentation/aws_vault.png)
+![aws_vault](./documentation/aws_vault.png)
 
 ## Usage
 
 1. Make sure [nodejs](https://nodejs.org) is installed
-2. Do `npm i -g terraboard`
-3. In your terraform repository run `terraboard`
+2. Do `npm i -g terraform-board`
+3. In your terraform repository run `terraform-board`
 4. Open your browser to `localhost:3001`
 
 ## Roadmap
