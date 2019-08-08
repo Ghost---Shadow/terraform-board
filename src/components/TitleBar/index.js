@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -6,6 +6,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import {
+  Switch, Route, Link, HashRouter,
+} from 'react-router-dom';
 
 const TabPanel = (props) => {
   const {
@@ -47,33 +50,41 @@ const useStyles = makeStyles(theme => ({
 
 const TitleBar = ({ contents }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  function handleChange(event, newValue) {
-    setValue(newValue);
-  }
 
   const tabs = contents.map((item, index) => (
     <Tab
       key={`Tab-${item.title}`}
-      label={item.title}
       {...a11yProps(index)}
+      label={item.title}
+      value={item.route}
+      component={Link}
+      to={item.route}
     />
   ));
-  const tabPanels = contents.map((item, index) => (
-    <TabPanel value={value} index={index} key={`TabPanel-${item.title}`}>
-      {item.component}
-    </TabPanel>
+  const routes = contents.map(item => (
+    <Route key={item.title} path={item.route} render={() => item.component} />
   ));
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="Title Bar">
-          {tabs}
-        </Tabs>
-      </AppBar>
-      {tabPanels}
-    </div>
+    <HashRouter>
+      <div className={classes.root}>
+        <Route
+          path="/"
+          render={({ location }) => (
+            <Fragment>
+              <AppBar position="static">
+                <Tabs value={location.pathname}>
+                  {tabs}
+                </Tabs>
+              </AppBar>
+              <Switch>
+                {routes}
+                <Route path="/" render={() => contents[0].component} />
+              </Switch>
+            </Fragment>
+          )}
+        />
+      </div>
+    </HashRouter>
   );
 };
 

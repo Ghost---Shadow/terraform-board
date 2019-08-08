@@ -36,9 +36,9 @@ class App extends React.Component {
     const { elements } = this.state;
 
     const contents = [
-      { title: 'Settings', component: <SettingsWindow /> },
-      { title: 'Graph', component: <RenderWindow elements={elements} /> },
-      { title: 'Plan and Apply', component: <PlanAndApply /> },
+      { title: 'Settings', component: <SettingsWindow />, route: '/settings' },
+      { title: 'Graph', component: <RenderWindow elements={elements} />, route: '/graph' },
+      { title: 'Plan and Apply', component: <PlanAndApply />, route: '/apply' },
     ];
 
     return (
