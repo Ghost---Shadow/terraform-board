@@ -21,6 +21,11 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
+  root: {
+    padding: theme.spacing(3, 2),
+    margin: 'auto',
+    width: '33%',
+  },
 }));
 
 export default useStyles;

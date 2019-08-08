@@ -12,12 +12,12 @@ const LabelAndButton = ({ title, onChange }) => {
   return (
     <label htmlFor={targetId}>
       <Grid container direction="row" alignItems="center">
-        <Grid item xs={3}>
+        <Grid item xs={8}>
           <Typography variant="body1" align="center">
             {title}
           </Typography>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <input
             className={classes.input}
             id={targetId}
