@@ -13,6 +13,10 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 
 import './highlight.css';
 
+import {
+  getTerraformInit,
+} from './api';
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -35,39 +39,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const sampleBash = `
-Initializing modules...
-- module.security_group_rules
-  Getting source "../vault-security-group-rules"
-
-Initializing provider plugins...
-- Checking for available provider plugins on https://releases.hashicorp.com...
-- Downloading plugin for provider "aws" (2.22.0)...
-
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = "..." constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = "~> 2.22"
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
-`;
-
-
 const FlowComponent = ({
-  heading, secondaryHeading, component, isExpanded, onChange,
+  heading, secondaryHeading,
+  component, isExpanded, onChange,
+  resetText, updateText, onDone,
 }) => {
   const classes = useStyles();
 
@@ -86,7 +61,15 @@ const FlowComponent = ({
       </ExpansionPanelDetails>
       <Divider />
       <ExpansionPanelActions style={{ justifyContent: 'flex-start' }}>
-        <Button variant="contained" size="small" color="primary">
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          onClick={() => {
+            resetText();
+            getTerraformInit(updateText, onDone);
+          }}
+        >
           {heading}
         </Button>
       </ExpansionPanelActions>
@@ -100,41 +83,75 @@ FlowComponent.propTypes = {
   component: PropTypes.node.isRequired,
   isExpanded: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
+  resetText: PropTypes.func.isRequired,
+  updateText: PropTypes.func.isRequired,
+  onDone: PropTypes.func.isRequired,
 };
 
-export default function ControlledExpansionPanels() {
+const secondaryHeadings = ['Pending', 'Done'];
+
+const PlanAndApply = () => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+
+  const [initText, setInitState] = React.useState('');
+  const [planText, setPlanState] = React.useState('');
+  const [applyText, setApplyState] = React.useState('');
+  const [secondaryHeadingState, setSecondaryHeadingState] = React.useState({
+    init: 0, plan: 0, apply: 0,
+  });
+
+  const [expanded, setExpanded] = React.useState('');
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const updateInitText = newValue => setInitState(last => `${last} ${newValue}`);
+  const resetInitText = () => setInitState('');
+
+  const updatePlanText = newValue => setPlanState(last => `${last} ${newValue}`);
+  const resetPlanText = () => setPlanState('');
+
+  const updateApplyText = newValue => setApplyState(last => `${last} ${newValue}`);
+  const resetApplyText = () => setApplyState('');
+
   const flows = [
     {
       heading: 'Initialize',
-      secondaryHeading: 'terraform init Successful',
-      component: <Highlight className="bash">{sampleBash}</Highlight>,
+      secondaryHeading: secondaryHeadings[secondaryHeadingState.init],
+      component: <Highlight className="bash">{initText}</Highlight>,
+      resetText: resetInitText,
+      updateText: updateInitText,
+      onDone: () => setSecondaryHeadingState(last => ({ ...last, init: 1 })),
     },
     {
       heading: 'Plan',
-      secondaryHeading: 'Plan Successful',
-      component: <Highlight className="bash">{sampleBash}</Highlight>,
+      secondaryHeading: secondaryHeadings[secondaryHeadingState.plan],
+      component: <Highlight className="bash">{planText}</Highlight>,
+      resetText: resetPlanText,
+      updateText: updatePlanText,
+      onDone: () => setSecondaryHeadingState(last => ({ ...last, plan: 1 })),
     },
     {
       heading: 'Apply',
-      secondaryHeading: 'Ready to apply',
-      component: <Highlight className="bash">{sampleBash}</Highlight>,
+      secondaryHeading: secondaryHeadings[secondaryHeadingState.apply],
+      component: <Highlight className="bash">{applyText}</Highlight>,
+      resetText: resetApplyText,
+      updateText: updateApplyText,
+      onDone: () => setSecondaryHeadingState(last => ({ ...last, apply: 1 })),
     },
   ];
-
   const flowComponents = flows.map((step, i) => (
     <FlowComponent
+      key={step.heading}
       heading={step.heading}
       secondaryHeading={step.secondaryHeading}
       component={step.component}
       isExpanded={expanded === `panel${i}`}
       onChange={handleChange(`panel${i}`)}
+      resetText={step.resetText}
+      updateText={step.updateText}
+      onDone={step.onDone}
     />
   ));
 
@@ -143,4 +160,6 @@ export default function ControlledExpansionPanels() {
       {flowComponents}
     </div>
   );
-}
+};
+
+export default PlanAndApply;

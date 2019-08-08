@@ -1,6 +1,6 @@
 {
   "name": "terraform-board",
-  "version": "0.3.0",
+  "version": "0.1.0",
   "bin": {
     "terraform-board": "server/index.js"
   },
@@ -20,6 +20,7 @@
     "react-cytoscapejs": "Ghost---Shadow/react-cytoscapejs#master",
     "react-dom": "^16.8.6",
     "react-highlight": "^0.12.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "styled-components": "^4.3.2",
     "typeface-roboto": "0.0.75"
