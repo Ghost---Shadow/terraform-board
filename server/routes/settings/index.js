@@ -43,12 +43,14 @@ const cloneAndPullGit = async (req, res) => {
   try {
     const payload = req.body;
     const destinationDir = process.env.WORK_DIR || './sandbox';
+    let cmd = '';
     if (fs.existsSync(path.join(destinationDir, '.git'))) {
-      await exec(`git --work-tree=${destinationDir} --git-dir=${destinationDir}/.git pull`);
+      cmd = `git --work-tree=${destinationDir} --git-dir=${destinationDir}/.git pull`;
     } else {
-      await exec(`git clone ${payload.url} ${destinationDir}`);
+      cmd = `git clone ${payload.url} ${destinationDir}`;
     }
-    return res.sendStatus(200);
+    const result = await exec(cmd);
+    return res.status(200).send(result);
   } catch (e) {
     console.error(e);
     return res.sendStatus(500);

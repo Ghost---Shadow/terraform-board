@@ -11,7 +11,7 @@ const {
   transformer,
 } = require('./node-mapper');
 
-const sample1 = require('./scenarios/02_vault/json/vault-cluster/main.json');
+const sample1 = require('../../scenarios/02_vault/json/vault-cluster/main.json');
 
 describe('node-mapper', () => {
   const basename = 'basename';

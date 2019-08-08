@@ -3,8 +3,8 @@ const {
   generateEdges,
 } = require('./edge-mapper');
 
-const sample = require('./scenarios/02_vault/json/vault-cluster/main.json');
-const expected = require('./scenarios/02_vault/json/vault-cluster/edges.json');
+const sample = require('../../scenarios/02_vault/json/vault-cluster/main.json');
+const expected = require('../../scenarios/02_vault/json/vault-cluster/edges.json');
 
 /* eslint-disable no-template-curly-in-string */
 describe('edge-mapper', () => {

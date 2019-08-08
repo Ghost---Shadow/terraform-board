@@ -8,9 +8,9 @@ const {
   uploadAwsCredentials,
   uploadGithubCredentials,
   cloneAndPullGit,
-} = require('./settings');
+} = require('./routes/settings');
 
-const { getGraph } = require('./graph');
+const { getGraph } = require('./routes/graph');
 
 const app = express();
 app.use(bodyParser.json({ limit: 99999999999 }));

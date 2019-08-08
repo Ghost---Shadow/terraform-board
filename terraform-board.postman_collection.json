@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "47e99c21-1b39-4759-a387-df5fb355d6f6",
+		"name": "terraform-board",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/graph",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/graph",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"graph"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/credentials/aws",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"base64\":\"data:DUMMYbase64,aGVsbG8=\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/credentials/aws",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"credentials",
+						"aws"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/credentials/github",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"base64\":\"data:DUMMYbase64,aGVsbG8=\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/credentials/github",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"credentials",
+						"github"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/git/clone",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"url\":\"git@github.com:Ghost---Shadow/dummy.git\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/git/clone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"git",
+						"clone"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
