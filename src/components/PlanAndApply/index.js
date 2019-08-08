@@ -15,6 +15,8 @@ import './highlight.css';
 
 import {
   getTerraformInit,
+  getTerraformPlan,
+  getTerraformApply,
 } from './api';
 
 const useStyles = makeStyles(theme => ({
@@ -43,6 +45,7 @@ const FlowComponent = ({
   heading, secondaryHeading,
   component, isExpanded, onChange,
   resetText, updateText, onDone,
+  apiCall,
 }) => {
   const classes = useStyles();
 
@@ -67,7 +70,7 @@ const FlowComponent = ({
           color="primary"
           onClick={() => {
             resetText();
-            getTerraformInit(updateText, onDone);
+            apiCall(updateText, onDone);
           }}
         >
           {heading}
@@ -86,6 +89,7 @@ FlowComponent.propTypes = {
   resetText: PropTypes.func.isRequired,
   updateText: PropTypes.func.isRequired,
   onDone: PropTypes.func.isRequired,
+  apiCall: PropTypes.func.isRequired,
 };
 
 const secondaryHeadings = ['Pending', 'Done'];
@@ -123,6 +127,7 @@ const PlanAndApply = () => {
       resetText: resetInitText,
       updateText: updateInitText,
       onDone: () => setSecondaryHeadingState(last => ({ ...last, init: 1 })),
+      apiCall: getTerraformInit,
     },
     {
       heading: 'Plan',
@@ -131,6 +136,7 @@ const PlanAndApply = () => {
       resetText: resetPlanText,
       updateText: updatePlanText,
       onDone: () => setSecondaryHeadingState(last => ({ ...last, plan: 1 })),
+      apiCall: getTerraformPlan,
     },
     {
       heading: 'Apply',
@@ -139,6 +145,7 @@ const PlanAndApply = () => {
       resetText: resetApplyText,
       updateText: updateApplyText,
       onDone: () => setSecondaryHeadingState(last => ({ ...last, apply: 1 })),
+      apiCall: getTerraformApply,
     },
   ];
   const flowComponents = flows.map((step, i) => (
@@ -152,6 +159,7 @@ const PlanAndApply = () => {
       resetText={step.resetText}
       updateText={step.updateText}
       onDone={step.onDone}
+      apiCall={step.apiCall}
     />
   ));
 
