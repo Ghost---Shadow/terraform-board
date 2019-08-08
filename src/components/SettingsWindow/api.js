@@ -29,4 +29,12 @@ const handleUpload = async (file, api) => {
 
 export const onAwsCredentialsChange = ({ target }) => handleUpload(target.files[0], '/api/credentials/aws');
 export const onGithubCredentialsChange = ({ target }) => handleUpload(target.files[0], '/api/credentials/github');
-export const onGitClone = url => console.log(url);
+export const onGitClone = url => fetch('/api/git/clone', {
+  method: 'POST',
+  headers: {
+    'cache-control': 'no-cache',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ url }),
+  json: true,
+});
