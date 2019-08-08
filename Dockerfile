@@ -10,5 +10,8 @@ EXPOSE 3001
 ENV AWS_CRED_DIR "~/.aws"
 ENV SSH_CRED_DIR "~/.ssh"
 ENV WORK_DIR "./"
+ENV TF_STATE_DIR './.tfstate'
+
+VOLUME TF_STATE_DIR
 
 CMD ["terraform-board"]
