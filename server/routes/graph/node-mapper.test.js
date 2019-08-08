@@ -185,7 +185,7 @@ describe('node-mapper', () => {
     it('should transform the sample', () => {
       const input = sample1;
       const received = JSON.stringify(transformer(input, basename, filename), null, 2);
-      expect(received).toMatchFile(path.join(__dirname, 'scenarios/02_vault/json/vault-cluster/nodes.json'));
+      expect(received).toMatchFile(path.join(__dirname, '../../scenarios/02_vault/json/vault-cluster/nodes.json'));
     });
   });
 });
