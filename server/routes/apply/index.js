@@ -22,15 +22,18 @@ const runAndPipe = (cmd, res) => {
 };
 
 const terraformInit = (req, res) => {
-  const cmd = 'bash ./server/routes/apply/test.sh';
+  // const cmd = 'bash ./server/routes/apply/test.sh';
+  const cmd = 'terraform init';
   runAndPipe(cmd, res);
 };
 const terraformPlan = (req, res) => {
-  const cmd = 'bash ./server/routes/apply/test.sh';
+  // const cmd = 'bash ./server/routes/apply/test.sh';
+  const cmd = 'terraform plan';
   runAndPipe(cmd, res);
 };
 const terraformApply = (req, res) => {
-  const cmd = 'bash ./server/routes/apply/test.sh';
+  // const cmd = 'bash ./server/routes/apply/test.sh';
+  const cmd = 'terraform apply';
   runAndPipe(cmd, res);
 };
 
