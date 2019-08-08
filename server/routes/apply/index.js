@@ -21,6 +21,8 @@ const runAndPipe = (cmd, res) => {
   s.pipe(res);
 };
 
+const tfstateDir = process.env.TF_STATE_DIR || './.tfstate';
+
 const terraformInit = (req, res) => {
   // const cmd = 'bash ./server/routes/apply/test.sh';
   const cmd = 'terraform init';
@@ -28,12 +30,12 @@ const terraformInit = (req, res) => {
 };
 const terraformPlan = (req, res) => {
   // const cmd = 'bash ./server/routes/apply/test.sh';
-  const cmd = 'terraform plan';
+  const cmd = `terraform plan -out ${tfstateDir}`;
   runAndPipe(cmd, res);
 };
 const terraformApply = (req, res) => {
   // const cmd = 'bash ./server/routes/apply/test.sh';
-  const cmd = 'terraform apply';
+  const cmd = `terraform apply -auto-approve ${tfstateDir}`;
   runAndPipe(cmd, res);
 };
 
