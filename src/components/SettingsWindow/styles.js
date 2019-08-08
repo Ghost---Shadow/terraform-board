@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     padding: theme.spacing(3, 2),
+    marginTop: '2%',
     margin: 'auto',
     width: '33%',
   },

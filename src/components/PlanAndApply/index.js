@@ -26,6 +26,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  container: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '2%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
 }));
 
 const sampleBash = `
@@ -105,6 +112,11 @@ export default function ControlledExpansionPanels() {
 
   const flows = [
     {
+      heading: 'Initialize',
+      secondaryHeading: 'terraform init Successful',
+      component: <Highlight className="bash">{sampleBash}</Highlight>,
+    },
+    {
       heading: 'Plan',
       secondaryHeading: 'Plan Successful',
       component: <Highlight className="bash">{sampleBash}</Highlight>,
@@ -117,19 +129,17 @@ export default function ControlledExpansionPanels() {
   ];
 
   const flowComponents = flows.map((step, i) => (
-    <React.Fragment>
-      <FlowComponent
-        heading={step.heading}
-        secondaryHeading={step.secondaryHeading}
-        component={step.component}
-        isExpanded={expanded === `panel${i}`}
-        onChange={handleChange(`panel${i}`)}
-      />
-    </React.Fragment>
+    <FlowComponent
+      heading={step.heading}
+      secondaryHeading={step.secondaryHeading}
+      component={step.component}
+      isExpanded={expanded === `panel${i}`}
+      onChange={handleChange(`panel${i}`)}
+    />
   ));
 
   return (
-    <div className={classes.root}>
+    <div className={classes.container}>
       {flowComponents}
     </div>
   );
