@@ -20,6 +20,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       elements: [],
+      loading: true,
     };
   }
 
@@ -27,17 +28,17 @@ class App extends React.Component {
     const loadGraph = async () => {
       const response = await fetch('/api/graph');
       const elements = await response.json();
-      this.setState({ elements });
+      this.setState({ elements, loading: false });
     };
     loadGraph();
   }
 
   render() {
-    const { elements } = this.state;
+    const { elements, loading } = this.state;
 
     const contents = [
       // { title: 'Settings', component: <SettingsWindow />, route: '/settings' },
-      { title: 'Graph', component: <RenderWindow elements={elements} />, route: '/graph' },
+      { title: 'Graph', component: <RenderWindow elements={elements} loading={loading} />, route: '/graph' },
       { title: 'Plan and Apply', component: <PlanAndApply />, route: '/apply' },
     ];
 

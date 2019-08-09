@@ -1,10 +1,12 @@
+# THIS IS A WORK IN PROGRESS.
+
 FROM node:10
 
 RUN apt-get update -y && apt-get upgrade -y
 
 RUN apt-get install git
 
-RUN npm i -g https://github.com/Ghost---Shadow/terraform-board.git
+RUN npm i -g terraform-board@0.1.1
 
 ENV AWS_CRED_DIR "~/.aws"
 ENV SSH_CRED_DIR "~/.ssh"

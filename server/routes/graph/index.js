@@ -12,6 +12,7 @@ const getGraph = (req, res) => {
   // TODO: Get from API
   const inputDir = path.join('./');
   const allFiles = walk(path.join(path.resolve(inputDir)));
+  if (allFiles.length === 0) return res.status(404).send([]);
   const basenameMap = {};
   allFiles.forEach((filename) => {
     const basename = path.basename(path.dirname(filename));
@@ -48,7 +49,7 @@ const getGraph = (req, res) => {
     const edges = generateEdges(allElements, basename);
     return baseNodes.concat(fileNodes).concat(nodes).concat(edges);
   });
-  res.send(allGraphs.reduce((acc, next) => acc.concat(next)));
+  return res.send(allGraphs.reduce((acc, next) => acc.concat(next)));
 };
 
 module.exports = {

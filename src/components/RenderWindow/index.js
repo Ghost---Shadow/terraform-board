@@ -4,6 +4,11 @@ import cytoscape from 'cytoscape';
 import CytoscapeComponent from 'react-cytoscapejs';
 import dagre from 'cytoscape-dagre';
 
+import {
+  NoElements,
+  Loading,
+} from './NoElements';
+
 cytoscape.use(dagre);
 
 const nodeColorLookup = {
@@ -56,8 +61,11 @@ class RenderWindow extends React.Component {
   }
 
   render() {
-    const { elements, width, height } = this.props;
-    if (!elements.length) return <div />;
+    const {
+      elements, width, height, loading,
+    } = this.props;
+    if (loading) return <Loading />;
+    if (!elements.length) return <NoElements />;
     return (
       <CytoscapeComponent
         elements={elements}
@@ -80,11 +88,13 @@ RenderWindow.propTypes = {
   ).isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
+  loading: PropTypes.bool,
 };
 
 RenderWindow.defaultProps = {
   width: window.innerWidth,
   height: window.innerHeight,
+  loading: false,
 };
 
 export default RenderWindow;

@@ -3,6 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs';
 import RenderWindow from './index';
+import { Loading } from './NoElements';
 
 const defaultSample = require('./samples/default');
 const groupingSample = require('./samples/grouping');
@@ -17,4 +18,9 @@ storiesOf('RenderWindow', module)
   ))
   .add('big', () => (
     <RenderWindow elements={bigSample} />
+  ));
+
+storiesOf('Loading', module)
+  .add('default', () => (
+    <Loading />
   ));
