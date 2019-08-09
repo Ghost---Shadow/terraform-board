@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 
 import './App.css';
 import RenderWindow from './components/RenderWindow';
-import SettingsWindow from './components/SettingsWindow';
+// import SettingsWindow from './components/SettingsWindow';
 import PlanAndApply from './components/PlanAndApply';
 import TitleBar from './components/TitleBar';
 
@@ -36,7 +36,7 @@ class App extends React.Component {
     const { elements } = this.state;
 
     const contents = [
-      { title: 'Settings', component: <SettingsWindow />, route: '/settings' },
+      // { title: 'Settings', component: <SettingsWindow />, route: '/settings' },
       { title: 'Graph', component: <RenderWindow elements={elements} />, route: '/graph' },
       { title: 'Plan and Apply', component: <PlanAndApply />, route: '/apply' },
     ];

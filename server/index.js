@@ -24,9 +24,9 @@ const port = 3001;
 
 app.get('/api/graph', getGraph);
 
-app.post('/api/credentials/aws', uploadAwsCredentials);
-app.post('/api/credentials/github', uploadGithubCredentials);
-app.post('/api/git/clone', cloneAndPullGit);
+// app.post('/api/credentials/aws', uploadAwsCredentials);
+// app.post('/api/credentials/github', uploadGithubCredentials);
+// app.post('/api/git/clone', cloneAndPullGit);
 
 app.get('/api/terraform/init', terraformInit);
 app.get('/api/terraform/plan', terraformPlan);
