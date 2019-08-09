@@ -1,13 +1,12 @@
-- create projects
-  - terraform init, plan and apply
 - Bug: Edges appearing on top of labels
-- Route for each tab
+- Bug: Dont call /api/graph if folder is empty
+- Details
+  - Show side bar with details (all the configs)
 - Increase spacing for nodes in same rank
     - Add ghost edges
 - Edge generation logic
   - Key lookup outside modules, link to the module block instead of creating a new node
-- Details
-  - Show side bar with details (all the configs)
+- TF vars window and workspaces
 - Collapsible nodes
   - Meta edges
   - https://github.com/iVis-at-Bilkent/cytoscape.js-expand-collapse
