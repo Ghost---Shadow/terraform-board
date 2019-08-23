@@ -12,4 +12,4 @@
 - Collapsible nodes
   - Meta edges
   - https://github.com/iVis-at-Bilkent/cytoscape.js-expand-collapse
-- Highlight all affected nodes for a var
+- Clicking on a node, highlights all connected nodes
