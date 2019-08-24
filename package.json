@@ -6,24 +6,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "^4.3.0",
-    "@material-ui/icons": "^4.2.1",
     "body-parser": "^1.19.0",
-    "cytoscape": "Ghost---Shadow/cytoscape.js#unstable",
-    "cytoscape-dagre": "^2.2.2",
     "express": "^4.17.1",
     "flat": "^4.1.0",
     "gopher-hcl": "^0.2.0",
-    "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-cytoscapejs": "Ghost---Shadow/react-cytoscapejs#master",
-    "react-dom": "^16.8.6",
-    "react-highlight": "^0.12.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "styled-components": "^4.3.2",
-    "typeface-roboto": "0.0.75"
+    "lodash": "^4.17.15"
   },
   "repository": {
     "type": "git",
@@ -60,18 +47,30 @@
     ]
   },
   "devDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-highlight": "^0.12.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.3.2",
+    "typeface-roboto": "0.0.75",
+    "cytoscape-dagre": "^2.2.2",
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/icons": "^4.2.1",
     "@storybook/addon-actions": "^5.1.10",
     "@storybook/addon-knobs": "^5.1.10",
     "@storybook/addon-links": "^5.1.10",
     "@storybook/addons": "^5.1.10",
     "@storybook/react": "^5.1.10",
+    "cytoscape": "^3.9.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "nodemon": "^1.19.1",
-    "jest-file-snapshot": "^0.3.6"
+    "jest-file-snapshot": "^0.3.6",
+    "nodemon": "^1.19.1"
   },
   "proxy": "http://localhost:3001"
 }
