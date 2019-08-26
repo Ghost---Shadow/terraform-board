@@ -30,21 +30,27 @@ const getGraph = (req, res) => {
     const fileNodes = [];
     let nodes = [];
     const allElements = basenameMap[basename].reduce((acc, filename) => {
-      console.log('Parsing', filename);
-      const fname = path.basename(filename);
-      fileNodes.push({
-        data: {
-          id: `${basename}/${fname}`,
-          label: fname,
-          type: 'fname',
-          parent: basename,
-        },
-      });
-      const source = fs.readFileSync(filename);
-      const parsedSource = hcl.parse(source);
-      const extractedNodes = transformer(parsedSource, basename, fname);
-      nodes = nodes.concat(extractedNodes);
-      return _.merge(acc, parsedSource);
+      try {
+        console.log('Parsing', filename);
+        const fname = path.basename(filename);
+        fileNodes.push({
+          data: {
+            id: `${basename}/${fname}`,
+            label: fname,
+            type: 'fname',
+            parent: basename,
+          },
+        });
+        const source = fs.readFileSync(filename);
+        const parsedSource = hcl.parse(source);
+        const extractedNodes = transformer(parsedSource, basename, fname);
+        nodes = nodes.concat(extractedNodes);
+        return _.merge(acc, parsedSource);
+      } catch (e) {
+        console.error('Unable to parse', filename);
+        console.error(e);
+        return acc;
+      }
     }, {});
     const edges = generateEdges(allElements, basename);
     return baseNodes.concat(fileNodes).concat(nodes).concat(edges);
