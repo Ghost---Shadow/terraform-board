@@ -4,11 +4,11 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const {
-  uploadAwsCredentials,
-  uploadGithubCredentials,
-  cloneAndPullGit,
-} = require('./routes/settings');
+// const {
+//   uploadAwsCredentials,
+//   uploadGithubCredentials,
+//   cloneAndPullGit,
+// } = require('./routes/settings');
 
 const { getGraph } = require('./routes/graph');
 

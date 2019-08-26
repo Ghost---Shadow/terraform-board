@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cytoscape from 'cytoscape';
-import CytoscapeComponent from 'react-cytoscapejs';
 import dagre from 'cytoscape-dagre';
+import _ from 'lodash';
 
 import {
   NoElements,
@@ -11,53 +11,67 @@ import {
 
 cytoscape.use(dagre);
 
-const nodeColorLookup = {
+const colorLookup = {
   provider: '#f9ab00',
   resource: '#66921b',
   module: '#e2683c',
   data: '#f9df7b',
+  fname: '#2B65EC',
 };
-
-const stylesheet = [
-  {
-    selector: 'node',
-    style: {
-      'background-color': ele => nodeColorLookup[ele.data('type')] || '#2B65EC',
-      label: ele => ele.data('label'),
-      shape: 'rectangle',
-    },
-  },
-  {
-    selector: ':parent',
-    style: {
-      'background-opacity': 0.333,
-      'border-color': '#2B65EC',
-    },
-  },
-  {
-    selector: 'edge',
-    style: {
-      'line-color': '#999',
-      'curve-style': 'straight',
-      // label: ele => ele.data('id'),
-    },
-  },
-];
 
 class RenderWindow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.cy = null;
+    this.state = {
+      elements: [],
+    };
   }
 
-  componentDidMount() {
-    if (this.cy) {
-      this.cy.nodes().on('click', (e) => {
-        const node = e.target;
-        console.log(node.data('id'));
-      });
-    }
+  componentWillReceiveProps(props) {
+    const { elements } = props;
+    this.setState({ elements }, () => this.renderCytoscapeElement());
+  }
+
+  updateCytoscape = () => {
+    const { elements } = this.state;
+    this.cy.json({ elements });
+  }
+
+  renderCytoscapeElement = () => {
+    const { elements } = this.state;
+    const coloredElements = elements.map(element => _.merge(element,
+      { data: { color: colorLookup[element.data.type] || '#eee' } }));
+    this.cy = cytoscape(
+      {
+        container: document.getElementById('cy'),
+        boxSelectionEnabled: false,
+        autounselectify: true,
+        style: cytoscape.stylesheet()
+          .selector('node')
+          .css({
+            content: 'data(label)',
+            shape: 'rectangle',
+            'background-color': 'data(color)',
+          })
+          .selector('parent')
+          .css({
+            'background-opacity': 0.333,
+            'border-color': '#2B65EC',
+          })
+          .selector('edge')
+          .css({
+            // 'target-arrow-shape': 'triangle',
+            'curve-style': 'bezier',
+            opacity: 'data(opacity)',
+          }),
+        elements: coloredElements,
+        layout: {
+          name: 'dagre',
+          nodeDimensionsIncludeLabels: true,
+        },
+      },
+    );
   }
 
   render() {
@@ -66,14 +80,11 @@ class RenderWindow extends React.Component {
     } = this.props;
     if (loading) return <Loading />;
     if (!elements.length) return <NoElements />;
+    const cyStyle = { height, width };
     return (
-      <CytoscapeComponent
-        elements={elements}
-        layout={{ name: 'dagre', nodeDimensionsIncludeLabels: true }}
-        style={{ width, height }}
-        stylesheet={stylesheet}
-        cy={(cy) => { this.cy = cy; }}
-      />
+      <div>
+        <div style={cyStyle} id="cy" />
+      </div>
     );
   }
 }
