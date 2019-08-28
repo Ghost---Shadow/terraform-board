@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -17,13 +16,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const NoElements = () => (
-  <Paper>
-    <Typography variant="h6" gutterBottom>
-      No Elements found
-    </Typography>
-  </Paper>
-);
+export const NoElements = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.loaderConainer}>
+      <Typography className={classes.progress} variant="h6" gutterBottom>
+        No terraform files found
+      </Typography>
+    </div>
+  );
+};
 
 
 export const Loading = () => {

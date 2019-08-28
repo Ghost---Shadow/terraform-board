@@ -20,31 +20,19 @@ const colorLookup = {
 };
 
 class RenderWindow extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      elements: [],
-    };
-  }
-
-  componentWillReceiveProps(props) {
-    const { elements } = props;
-    this.setState({ elements }, () => this.renderCytoscapeElement());
-  }
-
-  updateCytoscape = () => {
-    const { elements } = this.state;
-    this.cy.json({ elements });
+  componentDidUpdate() {
+    this.renderCytoscapeElement();
   }
 
   renderCytoscapeElement = () => {
-    const { elements } = this.state;
+    const { elements } = this.props;
+    if (!elements.length) return;
     const coloredElements = elements.map(element => _.merge(element,
       { data: { color: colorLookup[element.data.type] || '#eee' } }));
+    const container = document.getElementById('cy');
     this.cy = cytoscape(
       {
-        container: document.getElementById('cy'),
+        container,
         boxSelectionEnabled: false,
         autounselectify: true,
         style: cytoscape.stylesheet()
