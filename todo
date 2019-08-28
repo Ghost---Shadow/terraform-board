@@ -1,5 +1,4 @@
 - VPC view
-- Bug: Edges appearing on top of labels
 - Bug: Dont call /api/graph if folder is empty
 - Bug: Support for "${resource1.x}-${resource2.y}-${resource3.z}" like format
 - Details
